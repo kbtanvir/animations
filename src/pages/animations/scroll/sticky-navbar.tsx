@@ -7,24 +7,24 @@ function Navbar({ children }: { children: React.ReactNode }) {
 
   return (
     <AnimatePresence initial>
-      {!navBarFixed && (
+      {navBarFixed && (
         <motion.div
-          className="fixed left-0 right-0 top-0 h-[100px] w-full bg-indigo-500 shadow-lg"
+          className="fixed flex-center left-0 right-0 h-[100px] w-full bg-indigo-500 shadow-lg opacity-0"
           key={"fixed-navbar"}
-          initial={{ y: -100 }}
-          animate={{ y: 0 }}
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
           exit={{ y: -100 }}
-          transition={{
-            y: { type: "spring", stiffness: 300, damping: 30 },
-          }}
+          // transition={{
+          //   y: { type: "spring", stiffness: 300, damping: 30 },
+          // }}
         >
-          <div className="text-center text-6xl font-bold text-white">
+          <div className="uppercase  text-6xl font-thin text-white">
             {children}
           </div>
         </motion.div>
       )}
-      <motion.div className="absolute left-0 right-0 top-0 h-[100px] w-full bg-transparent">
-        <div className="text-center text-6xl font-bold text-white">
+      <motion.div className="absolute flex-center left-0 right-0 top-0 h-[100px] w-full bg-transparent border-b-2">
+        <div className="uppercase text-6xl font-thin text-white">
           {children}
         </div>
       </motion.div>
@@ -33,23 +33,11 @@ function Navbar({ children }: { children: React.ReactNode }) {
 }
 
 function Section({ children }: { children: React.ReactNode }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref);
-
-  useEffect(() => {
-    globalStore.setNavBarFixed(!isInView);
-  }, [isInView]);
-
   return (
-    <section
-      ref={ref}
-      className="h-[100vh] [&:nth-child(2)]:bg-[#0077ff] [&:nth-child(3)]:bg-[#ffaa00] [&:nth-child(4)]:bg-[#00ff55]"
-    >
+    <section className="h-[101vh] flex-center [&:nth-child(3)]:bg-blue-500 [&:nth-child(4)]:bg-orange-500 [&:nth-child(5)]:bg-emerald-500">
       <span
-        className="text-6xl font-bold text-white"
+        className="uppercase text-6xl font-thin text-white"
         style={{
-          transform: isInView ? "none" : "translateX(-200px)",
-          opacity: isInView ? 1 : 0,
           transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
         }}
       >
@@ -58,14 +46,35 @@ function Section({ children }: { children: React.ReactNode }) {
     </section>
   );
 }
+function Welcome() {
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+
+  useEffect(() => {
+    globalStore.setNavBarFixed(!isInView);
+  }, [isInView]);
+
+  return (
+    <motion.section ref={ref} className="h-[101vh] flex-center bg-pink-500">
+      <span
+        className="uppercase text-6xl font-[200] text-white"
+        style={{
+          transform: isInView ? "none" : "translateX(-200px)",
+          opacity: isInView ? 1 : 0,
+          transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+        }}
+      >
+        Welcome
+      </span>
+    </motion.section>
+  );
+}
 
 export default function App() {
   return (
     <div>
-      <div className="">
-        <Navbar>navbar</Navbar>
-      </div>
-      <Section>Content</Section>
+      <Navbar>navbar</Navbar>
+      <Welcome />
       <Section>in</Section>
       <Section>view!</Section>
     </div>
