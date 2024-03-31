@@ -8,7 +8,7 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "install": "pnpm run install"
+    "update": "pnpm install"
   },
   "dependencies": {
     "framer-motion": "^11.0.13",
@@ -19,9 +19,13 @@
     "react-router-dom": "^6.22.3",
     "sort-by": "^1.2.0",
     "tailwind-merge": "^2.2.1",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "vite-tsconfig-paths": "^4.3.2",
+    "@poly-state/poly-state": "^1.1.4",
+    "@poly-state/react": "^3.0.0"
   },
   "devDependencies": {
+    "@types/node": "^20.12.2",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
