@@ -140,35 +140,3 @@
     }
   }
 }
-
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  cursor: none;
-}
-
-.App {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: aqua;
-  font-family: "Mochiy Pop One", sans-serif;
-}
-
-.title {
-  font-size: 5rem;
-}
-
-.cursor {
-  background-color: #111;
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-}
