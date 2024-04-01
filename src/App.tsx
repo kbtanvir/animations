@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const pages = import.meta.glob("./pages/**/*.tsx", { eager: true }) as any;
 
-const routes = [];
+const routes = []  as any[]
 
 for (const path of Object.keys(pages)) {
   const fileName = path.match(/\.\/pages\/(.*)\.tsx$/)?.[1];
@@ -31,10 +31,10 @@ const router = createBrowserRouter(
   }))
 );
 
-
- 
 const App = () => {
   return <RouterProvider router={router} />;
 };
+
+export { routes };
 
 export default App;

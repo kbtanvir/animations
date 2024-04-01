@@ -29,6 +29,7 @@ export function LoremIpsum() {
   return (
     <>
       <article className="h-[150vh] ">
+        <h1 className="mb-10 text-[40px] font-bold">Something is good</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac
           rhoncus quam.
