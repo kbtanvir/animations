@@ -4,20 +4,13 @@ import { useState } from "react";
 export default function Page() {
   return (
     <>
-      <div className="App h-screen flex-center bg-yellow-400 gap-0">
+      <div className="App h-screen flex-center bg-yellow-400 gap-0 relative">
         <div className="grid grid-cols-4">
-          <Box></Box>
-          <Box></Box>
-          <Box></Box>
-          <Box></Box>
-          <Box></Box>
-          <Box></Box>
-          <Box></Box>
-          <Box></Box>
-          <Box></Box>
-          <Box></Box>
-          <Box></Box>
-          <Box></Box>
+          {Array(16)
+            .fill(0)
+            .map((_,i) => (
+              <Box key={i}/>
+            ))}
         </div>
       </div>
     </>
@@ -31,7 +24,7 @@ function Box() {
     y: [0, -200, 0],
     x: [0, 100, -200, 100, 0],
     rotate: [0, 360],
-    backgroundColor: ["rgba(0,0,0,0)", "#60F", "rgba(0,0,0,0)"],
+    backgroundColor: ["rgba(0,0,0,0)", "#ff0000", "rgba(0,0,0,0)"],
     transition: {
       // delay: 1,
       duration: 2,
@@ -47,12 +40,6 @@ function Box() {
     }
     setIsClicked(true);
   }
-  function handleMouseLeave() {
-    if (isClicked === false) {
-      return;
-    }
-    setIsClicked(false);
-  }
 
   const onAnimationComplete = () => {
     setIsClicked(false);
@@ -60,12 +47,11 @@ function Box() {
 
   return (
     <motion.div
-      className="border-4 border-black p-10 size-40 flex-center cursor-pointer"
+      className="border-[4px] border-black p-10 size-40 flex-center cursor-pointer mb-[-4px] mr-[-4px] text-[80px] fill-none"
       animate={isClicked ? jumpAnimation : {}}
       transition={{ duration: 0.5 }}
       onMouseEnter={handleMouseEnter}
-      // onMouseLeave={handleMouseLeave}
       onAnimationComplete={onAnimationComplete}
-    />
+    ></motion.div>
   );
 }
