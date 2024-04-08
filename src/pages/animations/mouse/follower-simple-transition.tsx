@@ -8,7 +8,7 @@ const App = () => {
 
   const mousePosition = useMouse(ref, {
     enterDelay: 100,
-    leaveDelay: 100,
+    leaveDelay: .1,
     "fps": 30,
   });
 
